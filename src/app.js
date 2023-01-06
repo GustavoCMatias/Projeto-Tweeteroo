@@ -16,3 +16,12 @@ server.post('/sign-up', (req, res) => {
     users.push(req.body)
     res.send("OK")
 })
+
+server.post('/tweets', (req, res) => {
+    const idx = users.findIndex(each => each.username === req.body.username)
+    if(idx === -1){
+        res.send('UNAUTHORIZED')
+    }
+    tweets.push(req.body)
+    res.send("OK")
+})
