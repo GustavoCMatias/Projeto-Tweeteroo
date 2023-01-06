@@ -10,7 +10,7 @@ const server= express()
 server.use(cors())
 server.use(express.json())
 
-server.listen(5000,() => {console.log('ta funfando')})
+server.listen(5000,() => {})
 
 server.post('/sign-up', (req, res) => {
     users.push(req.body)
@@ -24,7 +24,6 @@ server.post('/tweets', (req, res) => {
     }
 
     const tweet = {... req.body, avatar: users[idx].avatar}
-    console.log(tweet)
     tweets.push(tweet)
     res.send(tweet)
 })
