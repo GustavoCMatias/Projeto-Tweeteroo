@@ -22,6 +22,19 @@ server.post('/tweets', (req, res) => {
     if(idx === -1){
         res.send('UNAUTHORIZED')
     }
-    tweets.push(req.body)
-    res.send("OK")
+
+    const tweet = {... req.body, avatar: users[idx].avatar}
+    console.log(tweet)
+    tweets.push(tweet)
+    res.send(tweet)
+})
+
+server.get('/tweets', (req, res) => {
+    const ultimosTweets = []
+    tweets.forEach((each, index) => {
+        if(index>tweets.length-11){
+            ultimosTweets.push(each)
+        }
+    })
+    res.send(ultimosTweets)
 })
